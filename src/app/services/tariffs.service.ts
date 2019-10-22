@@ -9,7 +9,7 @@ export class TariffsService {
     constructor(private _http: HttpClient) { }
 
     list(): Observable<Manufacturer[]> {
-        return this._http.get<Manufacturer[]>('http://10.120.128.20:9001/car-rental/manufacturers');
+        return this._http.get<Manufacturer[]>('http://secure-island-06995.herokuapp.com/car-rental/manufacturers');
     }
 
     te(body: any): Observable<any> {
