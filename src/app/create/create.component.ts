@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren } from '@angular/core';
 import { TariffsService } from '../services/tariffs.service';
 import { Manufacturer } from '../models';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -9,7 +10,8 @@ import { Manufacturer } from '../models';
 })
 export class CreateComponent implements OnInit {
 
-  tarrifs: Manufacturer[] = [];
+
+  tariffs: Manufacturer[] = [];
 
   constructor(private _tariffsService: TariffsService) { }
 
@@ -22,7 +24,11 @@ export class CreateComponent implements OnInit {
    */
   listManufacturer(): void {
     this._tariffsService.list()
-      .subscribe(list => this.tarrifs = list);
+      .subscribe(list => this.tariffs = list);
+  }
+
+  save(): void {
+    console.log('salvou!');
   }
 
 }

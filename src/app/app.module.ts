@@ -8,6 +8,7 @@ import { ListComponent } from './list/list.component';
 import { TariffsService } from './services/tariffs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CommonModule } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [
     TariffsService
