@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Manufacturer } from '../models';
 
 @Injectable()
 export class TariffsService {
 
     constructor(private _http: HttpClient) { }
 
-    list(): Observable<any[]> {
-        return this._http.get<any[]>('https://secure-shore-34161.herokuapp.com/car-rental/manufacturers');
+    list(): Observable<Manufacturer[]> {
+        return this._http.get<Manufacturer[]>('http://10.120.128.20:9001/car-rental/manufacturers');
     }
 
-    create(body: any): Observable<any> {
+    te(body: any): Observable<any> {
         return this._http.post('', body);
     }
 
