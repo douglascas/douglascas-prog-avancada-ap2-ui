@@ -15,7 +15,7 @@ export class AutoMobileService {
 
     constructor(private _http: HttpClient) { }
 
-    listCheaperRent(params?: AutoParams): Observable<CheaperRent[]> {
+    getCheaperRent(params?: AutoParams): Observable<CheaperRent> {
 
         const url = `${herokuUrl.url}/car-rental/cheaper-rent`;
 
@@ -26,10 +26,10 @@ export class AutoMobileService {
                     .set('endDate', params.endDate ? params.endDate : null)
                     .set('loyaltyProgram', params.loyaltyProgram.toString())
             };
-            return this._http.get<CheaperRent[]>(url, optionsHttp);
+            return this._http.get<CheaperRent>(url, optionsHttp);
         }
 
-        return this._http.get<CheaperRent[]>(url);
+        return this._http.get<CheaperRent>(url);
 
     }
 

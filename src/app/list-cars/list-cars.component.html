@@ -24,24 +24,24 @@
 
   <h4>Carros</h4>
 
-  <pre>{{carsForm.value | json}}</pre>
-
-  <div *ngIf="cheaperRents && cheaperRents.length; else noCarsMessage">
+  <div *ngIf="cheaperRent; else noCarsMessage">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col" class="font-weight-bold">ID</th>
           <th scope="col" class="font-weight-bold">Nome</th>
           <th scope="col" class="font-weight-bold">Categoria</th>
           <th scope="col" class="font-weight-bold">Modelo</th>
           <th scope="col" class="font-weight-bold">Ano</th>
           <th scope="col" class="font-weight-bold">Fim de semana</th>
+          <th scope="col" class="font-weight-bold">Fim de semana com fidelidade</th>
+          <th scope="col" class="font-weight-bold">Dia de fim de semana</th>
+          <th scope="col" class="font-weight-bold">Dia de fim de semana com fidelidade</th>
           <th scope="col" class="font-weight-bold">Quantidade</th>
-          <th scope="col"></th>
+          <th scope="col" class="font-weight-bold">Quantidade de dias</th>
         </tr>
       </thead>
 
-      <tbody *ngFor="let cheaperRent of cheaperRents">
+      <tbody>
         <tr>
           <th scope="col" class="font-weight-normal">
             {{cheaperRent.automobileManufacturerName}}
@@ -56,7 +56,22 @@
             {{cheaperRent.automobileModelYearYear}}
           </th>
           <th scope="col" class="font-weight-normal">
+            {{cheaperRent.weekday}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.weekdayLoyalty}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.weekendDay}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.weekendDayLoyalty}}
+          </th>
+          <th scope="col" class="font-weight-normal">
             {{cheaperRent.amount}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.amountOfDaily}}
           </th>
         </tr>
       </tbody>

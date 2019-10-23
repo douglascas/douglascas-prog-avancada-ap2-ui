@@ -1,9 +1,14 @@
 export class CheaperRent {
 
-    automobileManufacturerName:	string;
-    automobileCategoryName:	string;
+    amount: number;
+    amountOfDaily: number;
+    automobileManufacturerName: string;
+    automobileCategoryName: string;
     automobileModelYearName: string;
     automobileModelYearYear: string;
-    amount:	number;
-
+    automobilePictureUrl: string;
+    weekday: number;
+    weekdayLoyalty: number;
+    weekendDay: number;
+    weekendDayLoyalty: number;
 }

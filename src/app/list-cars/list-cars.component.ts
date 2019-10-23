@@ -3,6 +3,7 @@ import { AutoMobileService, AutoParams } from '../services/auto-mobile.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CheaperRent } from '../models';
 import { debounceTime } from 'rxjs/operators';
+import { filter } from 'minimatch';
 
 @Component({
   selector: 'app-list-cars',
@@ -11,7 +12,7 @@ import { debounceTime } from 'rxjs/operators';
 })
 export class ListCarsComponent implements OnInit {
 
-  cheaperRents: CheaperRent[] = [];
+  cheaperRent: CheaperRent;
   carsForm: FormGroup;
 
   constructor(
@@ -19,23 +20,27 @@ export class ListCarsComponent implements OnInit {
     private _autoMobileService: AutoMobileService,
   ) {
     this.carsForm = fb.group({
-      startDate: this._formatDate(new Date()),
-      endDate: this._formatDate(new Date()),
+      startDate: new Date(),
+      endDate: new Date(),
       loyaltyProgram: false
     });
   }
 
   ngOnInit() {
-    this.listCars();
+    this.getCar();
 
     this.carsForm.valueChanges
       .pipe(debounceTime(300))
-      .subscribe(filters => this.listCars(filters));
+      .subscribe(filters => {
+        filters.startDate = filters.startDate ? this._formatDate(filters.startDate) : null;
+        filters.endDate = filters.endDate ? this._formatDate(filters.endDate) : null;
+        this.getCar(filters);
+      });
   }
 
-  listCars(params?: AutoParams): void {
-    this._autoMobileService.listCheaperRent(params)
-      .subscribe(cheaperRents => this.cheaperRents = cheaperRents);
+  getCar(params?: AutoParams): void {
+    this._autoMobileService.getCheaperRent(params)
+      .subscribe(cheaperRent => this.cheaperRent = cheaperRent);
   }
 
   private _formatDate(date: Date): string {
