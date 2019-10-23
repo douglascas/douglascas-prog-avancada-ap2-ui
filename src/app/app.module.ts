@@ -3,18 +3,19 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateComponent } from './create/create.component';
-import { ListComponent } from './list/list.component';
+import { TariffComponent } from './create-tariff/tariff.component';
+import { ListTariffComponent } from './list/list.component';
 import { TariffsService } from './services/tariffs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AutoMobileService } from './services/auto-mobile.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CreateComponent
+    ListTariffComponent,
+    TariffComponent
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
   ],
   providers: [
+    AutoMobileService,
     TariffsService
   ],
   bootstrap: [AppComponent]

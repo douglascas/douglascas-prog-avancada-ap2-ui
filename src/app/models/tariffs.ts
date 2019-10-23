@@ -7,9 +7,9 @@ export class Tariffs {
     category: Categories;
     model: Model;
     modelYear: ModelYear;
-    weekday: number;
-    weekdayLoyalty: number;
-    weekendDay: number;
-    weekendDayLoyalty: number;
-
+    weekday: number; // Fim de semana
+    weekdayLoyalty: number; // // Fim de semana com fidelidade
+    weekendDay: number; // Diária normal
+    weekendDayLoyalty: number; // Diária normal  com fidelidade
+    imageBase64: string;
 }

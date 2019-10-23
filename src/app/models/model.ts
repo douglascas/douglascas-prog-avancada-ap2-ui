@@ -1,6 +1,6 @@
 export class Model {
 
-    id: string;
+    id: number;
     name: string;
 
 }
