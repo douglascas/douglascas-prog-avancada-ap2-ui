@@ -24,8 +24,8 @@ export class TariffComponent implements OnInit {
   constructor(
     private _route: ActivatedRoute,
     private _autoMobileService: AutoMobileService,
-    private _tariffsService: TariffsService) {
-  }
+    private _tariffsService: TariffsService
+  ) { }
 
   ngOnInit() {
     if (this._route.snapshot.paramMap.get('id')) {

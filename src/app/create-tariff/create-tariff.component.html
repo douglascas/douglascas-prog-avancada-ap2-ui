@@ -6,7 +6,7 @@
             <div class="form-group col-6">
                 <label for="manufacture">Marcas</label>
                 <select class="form-control" id="manufacture" [(ngModel)]="tariff.manufacturer" name="manufacture"
-                    [compareWith]="compareByID" (ngModelChange)="updateModel()">
+                    [compareWith]="compareByID" (ngModelChange)="updateModel()" required>
                     <option value=""></option>
                     <option *ngFor="let manufacture of manufacturers" [ngValue]="manufacture">
                         <span>{{manufacture.name}}</span>
@@ -17,7 +17,8 @@
             <div class="form-group col-6">
                 <label for="categories">Categorias</label>
                 <select class="form-control" id="categories" [(ngModel)]="tariff.category" name="category"
-                    [compareWith]="compareByID" (ngModelChange)="updateModel()">
+                    [compareWith]="compareByID" (ngModelChange)="updateModel()" required>
+                    <option value=""></option>
                     <option *ngFor="let category of categories" [ngValue]="category">
                         <span>{{category.name}}</span>
                     </option>
@@ -30,7 +31,8 @@
                 <label for="models">Modelo</label>
                 <select class="form-control" id="models" [(ngModel)]="tariff.model" name="model"
                     (ngModelChange)="updateYears()" [compareWith]="compareByID"
-                    [disabled]="!(tariff.manufacturer && tariff.category)">
+                    [disabled]="!(tariff.manufacturer && tariff.category)" required>
+                    <option value=""></option>
                     <option *ngFor="let model of models" [ngValue]="model">
                         <span>{{model.name}}</span>
                     </option>
@@ -40,7 +42,8 @@
             <div class="form-group col-6">
                 <label for="tariffs">Ano</label>
                 <select class="form-control" id="tariffs" [(ngModel)]="tariff.modelYear" name="modelYear"
-                    [compareWith]="compareByID" [disabled]="!(tariff.category && tariff.model)">
+                    [compareWith]="compareByID" [disabled]="!(tariff.category && tariff.model)" required>
+                    <option value=""></option>
                     <option *ngFor="let year of years" [ngValue]="year">
                         <span>{{year.name}}</span>
                     </option>
@@ -52,31 +55,33 @@
             <div class="form-group col-3">
                 <label for="tariffs">Diária</label>
                 <input type="text" class="form-control" placeholder="R$0,00" aria-label="Diária"
-                    [(ngModel)]="tariff.weekday" name="weekday" aria-describedby="basic-addon1">
+                    [(ngModel)]="tariff.weekday" name="weekday" aria-describedby="basic-addon1" required>
             </div>
 
             <div class="form-group col-3">
                 <label for="tariffs">Diária com fidelidade</label>
                 <input type="text" class="form-control" placeholder="R$0,00" aria-label="Diária com fidelidade"
-                    [(ngModel)]="tariff.weekdayLoyalty" name="weekdayLoyalty" aria-describedby="basic-addon1">
+                    [(ngModel)]="tariff.weekdayLoyalty" name="weekdayLoyalty" aria-describedby="basic-addon1" required>
             </div>
 
             <div class="form-group col-3">
                 <label for="tariffs">Fim de semana</label>
                 <input type="text" class="form-control" placeholder="R$0,00" aria-label="Fim de semana"
-                    [(ngModel)]="tariff.weekendDay" name="weekendDay" aria-describedby="basic-addon1">
+                    [(ngModel)]="tariff.weekendDay" name="weekendDay" aria-describedby="basic-addon1" required>
             </div>
 
             <div class="form-group col-3">
                 <label for="tariffs">Fim de semana com fidelidade</label>
                 <input type="text" class="form-control" placeholder="R$0,00" aria-label="Fim de semana com fidelidade"
-                    [(ngModel)]="tariff.weekendDayLoyalty" name="weekendDayLoyalty" aria-describedby="basic-addon1">
+                    [(ngModel)]="tariff.weekendDayLoyalty" name="weekendDayLoyalty" aria-describedby="basic-addon1"
+                    required>
             </div>
         </div>
     </form>
 
     <div class="m-auto">
         <button type="button" class="btn btn-secondary mr-2" (click)="createForm.reset()">Limpar</button>
-        <button type="button" class="btn btn-primary mr-2" (click)="createTariff()">Salvar</button>
+        <button type="button" class="btn btn-primary mr-2" (click)="createTariff()"
+            [disabled]="tariffForm.form.invalid">Salvar</button>
     </div>
 </div>

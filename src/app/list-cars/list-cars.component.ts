@@ -19,8 +19,8 @@ export class ListCarsComponent implements OnInit {
     private _autoMobileService: AutoMobileService,
   ) {
     this.carsForm = fb.group({
-      startDate: '',
-      endDate: '',
+      startDate: this._formatDate(new Date()),
+      endDate: this._formatDate(new Date()),
       loyaltyProgram: false
     });
   }
@@ -30,9 +30,7 @@ export class ListCarsComponent implements OnInit {
 
     this.carsForm.valueChanges
       .pipe(debounceTime(300))
-      .subscribe(filters => {
-        this.listCars(filters);
-      });
+      .subscribe(filters => this.listCars(filters));
   }
 
   listCars(params?: AutoParams): void {
@@ -40,4 +38,19 @@ export class ListCarsComponent implements OnInit {
       .subscribe(cheaperRents => this.cheaperRents = cheaperRents);
   }
 
+  private _formatDate(date: Date): string {
+    const d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    const year = d.getFullYear();
+
+    if (month.length < 2) {
+      month = '0' + month;
+    }
+    if (day.length < 2) {
+      day = '0' + day;
+    }
+
+    return [year, month, day].join('-');
+  }
 }
