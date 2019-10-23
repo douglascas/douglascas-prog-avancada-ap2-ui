@@ -77,9 +77,11 @@
                     required>
             </div>
         </div>
+
+        <button type="button" class="btn btn-secondary mr-2">Limpar</button>
     </form>
 
-    <div class="m-auto">
+    <div class=" m-auto">
         <button type="button" class="btn btn-secondary mr-2" (click)="createForm.reset()">Limpar</button>
         <button type="button" class="btn btn-primary mr-2" (click)="createTariff()"
             [disabled]="tariffForm.form.invalid">Salvar</button>
