@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { herokuUrl } from './url-base';
 import { Manufacturer, Categories, Model, ModelYear, CheaperRent } from '../models';
 
 export interface AutoParams {
@@ -16,7 +17,7 @@ export class AutoMobileService {
 
     listCheaperRent(params?: AutoParams): Observable<CheaperRent[]> {
 
-        const url = 'http://secure-island-06995.herokuapp.com/car-rental/cheaper-rent';
+        const url = `${herokuUrl.url}/car-rental/cheaper-rent`;
 
         if (params) {
             const optionsHttp = {
@@ -33,31 +34,31 @@ export class AutoMobileService {
     }
 
     listManufacturers(): Observable<Manufacturer[]> {
-        return this._http.get<Manufacturer[]>('http://secure-island-06995.herokuapp.com/car-rental/manufacturers');
+        return this._http.get<Manufacturer[]>(`${herokuUrl.url}/car-rental/manufacturers`);
     }
 
     listManufacturersById(id: number): Observable<Manufacturer[]> {
-        return this._http.get<Manufacturer[]>(`http://secure-island-06995.herokuapp.com/car-rental/manufacturers/${id}`);
+        return this._http.get<Manufacturer[]>(`${herokuUrl.url}/car-rental/manufacturers/${id}`);
     }
 
     listCategories(): Observable<Categories[]> {
-        return this._http.get<Categories[]>('http://secure-island-06995.herokuapp.com/car-rental/categories');
+        return this._http.get<Categories[]>(`${herokuUrl.url}/car-rental/categories`);
     }
 
     listCategoriesById(id: number): Observable<Categories[]> {
-        return this._http.get<Categories[]>(`http://secure-island-06995.herokuapp.com/car-rental/categories/${id}`);
+        return this._http.get<Categories[]>(`${herokuUrl.url}/car-rental/categories/${id}`);
     }
 
     listModels(): Observable<Model[]> {
-        return this._http.get<Model[]>('http://secure-island-06995.herokuapp.com/car-rental/models');
+        return this._http.get<Model[]>(`${herokuUrl.url}/car-rental/models`);
     }
 
     listModelsByManufactureId(manufactureId: number): Observable<Model[]> {
-        return this._http.get<Model[]>(`http://secure-island-06995.herokuapp.com/car-rental/manufacturers/${manufactureId}/models`);
+        return this._http.get<Model[]>(`${herokuUrl.url}/car-rental/manufacturers/${manufactureId}/models`);
     }
 
     listYearsByManufactureAndModelId(manufactureId: number, modelId: number): Observable<ModelYear[]> {
-        const url = `http://secure-island-06995.herokuapp.com/car-rental/manufacturers/${manufactureId}/models/${modelId}`;
+        const url = `${herokuUrl.url}/car-rental/manufacturers/${manufactureId}/models/${modelId}`;
         return this._http.get<ModelYear[]>(url);
     }
 }

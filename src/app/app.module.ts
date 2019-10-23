@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoMobileService } from './services/auto-mobile.service';
 import { ListCarsComponent } from './list-cars/list-cars.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,11 @@ import { ListCarsComponent } from './list-cars/list-cars.component';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AutoMobileService,

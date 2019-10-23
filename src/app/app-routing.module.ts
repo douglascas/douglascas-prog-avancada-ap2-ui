@@ -8,7 +8,7 @@ import { ListCarsComponent } from './list-cars/list-cars.component';
 const routes: Routes = [
   { path: 'tariffs', component: ListTariffComponent }, // Rota para a tela de listagem de tarifas
   { path: 'cars', component: ListCarsComponent }, // Rota para a tela de listagem de carros
-  { path: 'create', component: TariffComponent }, // Rota para a tela de criação
+  { path: 'create', component: TariffComponent }, // Rota para a tela de criação de tarifa
   { path: 'edit/:id', component: TariffComponent }, // Rota para a tela de edição
   {
     path: '', // Envia a rota para "list" default

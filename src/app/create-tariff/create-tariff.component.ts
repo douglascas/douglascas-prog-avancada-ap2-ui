@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TariffsService } from '../services/tariffs.service';
 import { Manufacturer, Categories, Tariffs, Model, ModelYear } from '../models';
 import { AutoMobileService } from '../services/auto-mobile.service';
 import { ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-tariff',
@@ -12,11 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class TariffComponent implements OnInit {
 
   tariff: Tariffs;
-
   categories: Categories[] = [];
   models: Model[] = [];
   years: ModelYear[] = [];
   manufacturers: Manufacturer[] = [];
+
+  @ViewChild('tariffForm', null) tariffForm: NgForm;
+  createForm: NgForm;
 
   constructor(
     private _route: ActivatedRoute,
@@ -85,7 +88,15 @@ export class TariffComponent implements OnInit {
   }
 
   createTariff(): void {
-    this._tariffsService.create(this.tariff).subscribe();
+    this._tariffsService.create(this.tariff)
+      .subscribe(() => {
+        alert('Tarifa criada com sucesso.');
+        this.clearForm();
+      });
+  }
+
+  clearForm(): void {
+    this.tariffForm.reset();
   }
 
   compareByID(first?: any, second?: any) {
