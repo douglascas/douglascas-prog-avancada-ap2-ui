@@ -1,0 +1,67 @@
+<div class="mt-4 mb-4">
+
+  <form [formGroup]="carsForm">
+    <div class="row">
+      <div class="form-group col-3">
+        <label for="tariffs">Data inicial:</label>
+        <input type="text" class="form-control" formControlName="startDate">
+      </div>
+
+      <div class="form-group col-3">
+        <label for="tariffs">Data final:</label>
+        <input type="text" class="form-control" formControlName="endDate">
+      </div>
+
+      <div class="form-group">
+        <label>Participa de programa de fidelidade:</label>
+        <select class="form-control" id="models" formControlName="loyaltyProgram">
+          <option value="'true'" [selected]="true"><span>Sim</span></option>
+          <option value="'false'"><span>Não</span></option>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <h4>Carros</h4>
+
+  <div *ngIf="cheaperRents && cheaperRents.length; else noCarsMessage">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="font-weight-bold">ID</th>
+          <th scope="col" class="font-weight-bold">Nome</th>
+          <th scope="col" class="font-weight-bold">Categoria</th>
+          <th scope="col" class="font-weight-bold">Modelo</th>
+          <th scope="col" class="font-weight-bold">Ano</th>
+          <th scope="col" class="font-weight-bold">Fim de semana</th>
+          <th scope="col" class="font-weight-bold">Quantidade</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let cheaperRent of cheaperRents">
+        <tr>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.automobileManufacturerName}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.automobileCategoryName}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.automobileModelYearName}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.automobileModelYearYear}}
+          </th>
+          <th scope="col" class="font-weight-normal">
+            {{cheaperRent.amount}}
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noCarsMessage>
+    <span>Não tem carros cadastrados ou disponíveis.</span>
+  </ng-template>
+</div>

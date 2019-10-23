@@ -1,5 +1,5 @@
 <div class="mt-4">
-  <h4>Carros</h4>
+  <h4>Tarifas</h4>
 
   <div *ngIf="tariffs && tariffs.length; else noTariffMessage">
     <table class="table">
@@ -54,6 +54,6 @@
   </div>
 
   <ng-template #noTariffMessage>
-    <span>Não tem carros cadastrados ou disponíveis.</span>
+    <span>Não tem tarifas cadastradas ou disponíveis.</span>
   </ng-template>
 </div>

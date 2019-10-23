@@ -8,14 +8,16 @@ import { ListTariffComponent } from './list-tariff/list-tariff.component';
 import { TariffsService } from './services/tariffs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutoMobileService } from './services/auto-mobile.service';
+import { ListCarsComponent } from './list-cars/list-cars.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListTariffComponent,
-    TariffComponent
+    TariffComponent,
+    ListCarsComponent,
   ],
   imports: [
     CommonModule,
@@ -23,6 +25,7 @@ import { AutoMobileService } from './services/auto-mobile.service';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     AutoMobileService,

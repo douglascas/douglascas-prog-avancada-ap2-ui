@@ -28,11 +28,17 @@ export class ListTariffComponent implements OnInit {
     this._tariffsService.list().subscribe(list => this.tariffs = list);
   }
 
+  /**
+   * Rota para a `Tarifa` selecionada
+   */
   goToTariffDetail(tariff: TariffsDetails): void {
     const link = ['/edit', tariff.id];
     this._router.navigate(link);
   }
 
+  /**
+   * Deleta a `Tarifa` selecionada
+   */
   deleteItem(tariff: TariffsDetails) {
     if (confirm('Excluir item?')) {
       this._tariffsService.delete(+tariff.id)
