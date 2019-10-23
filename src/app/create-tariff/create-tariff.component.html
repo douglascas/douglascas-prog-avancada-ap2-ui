@@ -40,7 +40,7 @@
             <div class="form-group col-6">
                 <label for="tariffs">Ano</label>
                 <select class="form-control" id="tariffs" [(ngModel)]="tariff.modelYear" name="modelYear"
-                    [compareWith]="compareByID" [disabled]="!tariff.model && !tariff">
+                    [compareWith]="compareByID" [disabled]="!(tariff.category && tariff.model)">
                     <option *ngFor="let year of years" [ngValue]="year">
                         <span>{{year.name}}</span>
                     </option>

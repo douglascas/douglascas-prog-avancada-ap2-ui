@@ -5,9 +5,9 @@ import { AutoMobileService } from '../services/auto-mobile.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-tariff',
-  templateUrl: './tariff.component.html',
-  styleUrls: ['./tariff.component.scss']
+  selector: 'app-create-tariff',
+  templateUrl: './create-tariff.component.html',
+  styleUrls: ['./create-tariff.component.scss']
 })
 export class TariffComponent implements OnInit {
 
@@ -22,7 +22,6 @@ export class TariffComponent implements OnInit {
     private _route: ActivatedRoute,
     private _autoMobileService: AutoMobileService,
     private _tariffsService: TariffsService) {
-
   }
 
   ngOnInit() {

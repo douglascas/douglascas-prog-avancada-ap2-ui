@@ -1,0 +1,59 @@
+<div class="mt-4">
+  <h4>Carros</h4>
+
+  <div *ngIf="tariffs && tariffs.length; else noTariffMessage">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" class="font-weight-bold">ID</th>
+          <th scope="col" class="font-weight-bold">Nome</th>
+          <th scope="col" class="font-weight-bold">Categoria</th>
+          <th scope="col" class="font-weight-bold">Modelo</th>
+          <th scope="col" class="font-weight-bold">Ano</th>
+          <th scope="col" class="font-weight-bold">Weekday</th>
+          <th scope="col" class="font-weight-bold">WeekdayLoyalty</th>
+          <th scope="col" class="font-weight-bold">WeekendDay</th>
+          <th scope="col" class="font-weight-bold">WeekendDayLoyalty</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let tariff of tariffs">
+        <tr>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.id}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.automobileManufacturerName}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.automobileCategoryName}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.automobileModelYearName}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.automobileModelYearYear}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.weekday}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.weekdayLoyalty}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.weekendDay}}
+          </th>
+          <th scope="col" class="font-weight-normal" (click)="goToTariffDetail(tariff)">
+            {{tariff.weekendDayLoyalty}}
+          </th>
+          <th scope="col"><i class="fa fa-trash" (click)="deleteItem(tariff)"></i></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #noTariffMessage>
+    <span>Não tem carros cadastrados ou disponíveis.</span>
+  </ng-template>
+</div>

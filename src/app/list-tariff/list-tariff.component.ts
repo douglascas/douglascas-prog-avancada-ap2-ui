@@ -4,9 +4,9 @@ import { TariffsDetails } from '../models';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-list-tariff',
+  templateUrl: './list-tariff.component.html',
+  styleUrls: ['./list-tariff.component.scss']
 })
 export class ListTariffComponent implements OnInit {
 
@@ -25,8 +25,7 @@ export class ListTariffComponent implements OnInit {
    * Método para listar `Manufacturer`.
    */
   listTariffs(): void {
-    this._tariffsService.list()
-      .subscribe(list => this.tariffs = list);
+    this._tariffsService.list().subscribe(list => this.tariffs = list);
   }
 
   goToTariffDetail(tariff: TariffsDetails): void {
@@ -34,5 +33,13 @@ export class ListTariffComponent implements OnInit {
     this._router.navigate(link);
   }
 
+  deleteItem(tariff: TariffsDetails) {
+    if (confirm('Excluir item?')) {
+      this._tariffsService.delete(+tariff.id)
+        .subscribe(() => {
+          this.tariffs = this.tariffs.filter(item => item.id !== tariff.id);
+        });
+    }
+  }
 
 }

@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TariffComponent } from './create-tariff/tariff.component';
-import { ListTariffComponent } from './list/list.component';
+import { TariffComponent } from './create-tariff/create-tariff.component';
+import { ListTariffComponent } from './list-tariff/list-tariff.component';
 import { TariffsService } from './services/tariffs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
